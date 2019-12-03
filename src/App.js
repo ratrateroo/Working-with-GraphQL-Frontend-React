@@ -58,7 +58,7 @@ class App extends Component {
 
   loginHandler = (event, authData) => {
     event.preventDefault();
-    const qraphqlQuery = {
+    const graphqlQuery = {
       query: `
         {
           login(email: "${authData.email}", 
@@ -75,7 +75,7 @@ class App extends Component {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(qraphqlQuery)
+      body: JSON.stringify(graphqlQuery)
       })
       .then(res => {
         

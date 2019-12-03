@@ -88,9 +88,6 @@ class Feed extends Component {
       body: JSON.stringify(graphqlQuery)
     })
       .then(res => {
-        if (res.status !== 200) {
-          throw new Error('Failed to fetch posts.');
-        }
         return res.json();
       })
       .then(resData => {
@@ -207,7 +204,7 @@ class Feed extends Component {
           _id: resData.data.createPost._id,
           title: resData.data.createPost.title,
           content: resData.data.createPost.content,
-          creator: resData.post.creator,
+          creator: resData.data.createPost.creator,
           createdAt: resData.data.createPost.createdAt
         };
         this.setState(prevState => {
