@@ -184,7 +184,6 @@ class Feed extends Component {
       editLoading: true
     });
     const formData = new FormData();
-    console.log(postData, "Post Data");
     formData.append('image', postData.image);
     if (this.state.editPost) {
       formData.append('oldPath', this.state.editPost.imagePath);
@@ -203,9 +202,7 @@ class Feed extends Component {
       let graphqlQuery = {
         query: `
         mutation CreateNewPost($title: String!, $content: String!, $imageUrl: String!){
-          createPost(postInput: {title: $title,
-          content: $content,
-          imageUrl: $imageUrl}) {
+          createPost(postInput: {title: $title, content: $content, imageUrl: $imageUrl}) {
             _id
             title
             content
@@ -228,9 +225,7 @@ class Feed extends Component {
         graphqlQuery = {
           query: `
           mutation UpdateExistingPost($postId: ID!, $title: String!, $content: String!, $imageUrl: String!){
-            updatePost(id: $postId}",postInput: {title: $title,
-              content: $content,
-              imageUrl: $imageUrl}) {
+            updatePost(id: $postId, postInput: {title: $title, content: $content, imageUrl: $imageUrl}) {
               _id
               title
               content
